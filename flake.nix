@@ -16,6 +16,8 @@
             nodePackages.ganache-cli # A tool for creating a local blockchain for fast Ethereum development
             go # The Go Programming language
             gopls # Official language server for the Go language
+            solc # Compiler for Ethereum smart contract language Solidity
+            go-ethereum # Official golang implementation of the Ethereum protocol
           ];
         };
       });
