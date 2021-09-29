@@ -7,8 +7,6 @@ gen-go-bindings: build-contracts
 	abigen --sol ./contracts/Authority.sol --pkg=authority --out=./backend/contracts/authority/Authority.go
 	abigen --sol ./contracts/CreditScoreDB.sol --pkg=creditscoredb --out=./backend/contracts/creditscoredb/CreditScoreDB.go
 
-.PHONY: deploy-contracts
-deploy-contracts:
 
 .PHONY: clean
 clean:
