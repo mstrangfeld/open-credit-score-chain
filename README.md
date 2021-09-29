@@ -45,18 +45,33 @@ Otherwise you will need the following software installed:
 $ ganache-cli -d
 ```
 
-### Compiling and deploying the smart contracts to the chain
-
-```sh
-$ make build-contracts
-$ make deploy-contracts
-```
-
-### Generate Go bindings for the backend
+### Starting the backend and deploying the authority smart contract
 
 ```sh
 $ make gen-go-bindings
+$ cd backend && go run .
 ```
+
+### Helpful resources
++ [Solidity Documentation](https://docs.soliditylang.org/en/latest/)
++ [Introduction to zero-knowledge-proofs](https://zkp.science/)
++ [Vitalik Buterin blog post about zk-SNARKs](https://vitalik.ca/general/2021/01/26/snarks.html)
++ [Golang gnark Documentation](https://docs.gnark.consensys.net/en/latest/)
++ [Go Ethereum Book](https://goethereumbook.org/)
+
+## TODOs
+
+- [x] Create the basic smart contracts (see `contracts/`)
+- [x] Deploy the contracts to the blockchain (see `backend/main.go`)
+- [x] Encrypt and decrypt records for an Ethereum user (see `backend/records/`)
+- [x] Create zk-SNARKs of the credit score (see `backend/zkproof/`)
+- [x] Verify zk-SNARKs with the public hashes available (see `backend/zkproof/`)
+- [ ] Implement the REST API in the backend
+- [ ] Create frontend to interact with the backend
+- [ ] Access right checking in the smart contracts
+- [ ] Authentication to the backend
+- [ ] Secure multiparty implementation of the zk-SNARK to be able to create zk-Proofs without having the server knowing about the plain-text records
+- [ ] Modular zk-SNARKs for alternative algorithms (at the moment we just create a sum of all inputs)
 
 ## License
 
