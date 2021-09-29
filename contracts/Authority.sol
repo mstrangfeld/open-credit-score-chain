@@ -7,7 +7,6 @@ pragma solidity >=0.4.16 <0.9.0;
  * It is also used to manage the entities that are allowed to write to the credit score database.
  */
 contract Authority {
-    bool private initialized; // If the smart contract has been initialized
     address public root; // The root of trust for this authority
 
     mapping(string => address) private creditDbs; // A mapping of taxIDs to their corresponding credit score database
@@ -16,11 +15,9 @@ contract Authority {
     /**
      * @dev Constructor
      */
-    function initialize(address _root) public {
-        require(_root != address(0), "Root address cannot be the zero address");
-        require(!initialized, "Contract has already been initialized.");
-        initialized = true;
-        root = _root;
+    constructor() {
+        require(msg.sender != address(0), "Root address cannot be the zero address");
+        root = msg.sender;
     }
 
     /**
