@@ -11,6 +11,8 @@ This way no unnecessary information is leaked, the user has full transparancy of
 
 ## Concept
 
+![Alt text](./docs/OCSC.svg)
+
 ### Why Ethereum?
 We don't want to use more energy than necessary for storing the records and calculating the credit score of a person.
 Although Ethereum currently uses the proof-of-work algorithm that wastes a lot of energy, it will soon switch to a more resource-friendly proof-of-stake algorithm.
