@@ -1,8 +1,10 @@
 FROM golang:1.16 AS builder
-COPY . /go/src/github.com/mstrangfeld/backend
-RUN go build -o /go/src/github.com/mstrangfeld/backend/backend
+WORKDIR /go/src/github.com/mstrangfeld/open-credit-score-chain/backend
+COPY . ./
+RUN go get -v -d ./...
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o backend .
 
-FROM debian:buster
-LABEL Author="Marvin Strangfeld <marvin@strangfeld.io>"
-COPY --from=builder /go/src/github.com/mstrangfeld/backend/backend /usr/local/bin/backend
+FROM alpine:latest  
+RUN apk --no-cache add ca-certificates
+COPY --from=builder /go/src/github.com/mstrangfeld/open-credit-score-chain/backend/backend /usr/local/bin/backend
 ENTRYPOINT [ "/usr/local/bin/backend" ]
